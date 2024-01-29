@@ -1,7 +1,7 @@
-const int waterSensorPin = A0;  // Pin del sensore di livello dell'acqua
-const int redPin = 11;         // Pin del LED rosso
-const int yellowPin = 10;      // Pin del LED giallo
-const int greenPin = 9;        // Pin del LED verde
+const int waterSensorPin = A0;  // Pin for the water level sensor
+const int redPin = 11;         // Pin for the red LED
+const int yellowPin = 10;      // Pin for the yellow LED
+const int greenPin = 9;        // Pin for the green LED
 
 void setup() {
   pinMode(waterSensorPin, INPUT);
@@ -15,23 +15,23 @@ void setup() {
 void loop() {
   int waterLevel = digitalRead(waterSensorPin);
 
-  // Se il sensore rileva acqua
+  // If the sensor detects water
   if (waterLevel == HIGH) {
-    // Accendi il LED verde
+    // Turn on the green LED
     digitalWrite(greenPin, HIGH);
     digitalWrite(yellowPin, LOW);
     digitalWrite(redPin, LOW);
   } else {
-    // Spegni il LED verde e accendi il LED rosso
+    // Turn off the green LED and turn on the red LED
     digitalWrite(greenPin, LOW);
     digitalWrite(yellowPin, LOW);
     digitalWrite(redPin, HIGH);
     
-    delay(1000);  // Aggiungi un ritardo di 1 secondo
-    // Accendi il LED giallo per un breve periodo
+    delay(1000);  // Add a delay of 1 second
+    // Turn on the yellow LED for a short period
     digitalWrite(redPin, LOW);
     digitalWrite(yellowPin, HIGH);
-    delay(500);  // Aggiungi un ritardo di 500 millisecondi
+    delay(500);  // Add a delay of 500 milliseconds
     digitalWrite(yellowPin, LOW);
   }
 }
