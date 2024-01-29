@@ -1,0 +1,51 @@
+// Definizione dei pin per i LED RGB
+const int redPin = 11;
+const int greenPin = 10;
+const int bluePin = 9; // Utilizzo del pin 9 al posto del 13 per il blu
+const int touchPin = 3;
+// Stati dei colori per il LED RGB
+enum ColorState { RED, GREEN, BLUE };
+ColorState currentColor = RED; // Impostazione del colore iniziale
+
+void setup() {
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  pinMode(touchPin, INPUT);
+}
+
+void loop() {
+  int touchState = digitalRead(touchPin);
+
+  if (touchState == HIGH) {
+    // Se il touch sensor viene attivato, cambia il colore
+    changeColor();
+    delay(250); // Aggiungi un ritardo per evitare rapidi cambiamenti di colore a seguito di un singolo tocco
+  }
+}
+
+void changeColor() {
+  // Modifica lo stato del colore attuale in base al colore successivo
+  switch (currentColor) {
+    case RED:
+      analogWrite(redPin, 0);
+      analogWrite(greenPin, 255);
+      analogWrite(bluePin, 0);
+      currentColor = GREEN;
+      break;
+    case GREEN:
+      analogWrite(redPin, 0);
+      analogWrite(greenPin, 0);
+      analogWrite(bluePin, 255);
+      currentColor = BLUE;
+      break;
+    case BLUE:
+      analogWrite(redPin, 255);
+      analogWrite(greenPin, 0);
+      analogWrite(bluePin, 0);
+      currentColor = RED;
+      break;
+    default:
+      break;
+  }
+}
