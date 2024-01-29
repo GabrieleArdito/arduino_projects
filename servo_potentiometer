@@ -1,5 +1,5 @@
 #include <Servo.h>
-
+ 
 const int potPin = 2;        // Pin for the potentiometer
 const int servoPin9 = 9;     // Pin for servo motor 9
 const int servoPin6 = 6;     // Pin for servo motor 6
