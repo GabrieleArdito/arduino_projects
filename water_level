@@ -1,0 +1,37 @@
+const int waterSensorPin = A0;  // Pin del sensore di livello dell'acqua
+const int redPin = 11;         // Pin del LED rosso
+const int yellowPin = 10;      // Pin del LED giallo
+const int greenPin = 9;        // Pin del LED verde
+
+void setup() {
+  pinMode(waterSensorPin, INPUT);
+  pinMode(redPin, OUTPUT);
+  pinMode(yellowPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  int waterLevel = digitalRead(waterSensorPin);
+
+  // Se il sensore rileva acqua
+  if (waterLevel == HIGH) {
+    // Accendi il LED verde
+    digitalWrite(greenPin, HIGH);
+    digitalWrite(yellowPin, LOW);
+    digitalWrite(redPin, LOW);
+  } else {
+    // Spegni il LED verde e accendi il LED rosso
+    digitalWrite(greenPin, LOW);
+    digitalWrite(yellowPin, LOW);
+    digitalWrite(redPin, HIGH);
+    
+    delay(1000);  // Aggiungi un ritardo di 1 secondo
+    // Accendi il LED giallo per un breve periodo
+    digitalWrite(redPin, LOW);
+    digitalWrite(yellowPin, HIGH);
+    delay(500);  // Aggiungi un ritardo di 500 millisecondi
+    digitalWrite(yellowPin, LOW);
+  }
+}
