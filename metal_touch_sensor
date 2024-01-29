@@ -6,7 +6,7 @@ const int touchPin = 3;
 // Color states for the RGB LED
 enum ColorState { RED, GREEN, BLUE };
 ColorState currentColor = RED; // Setting the initial color
-
+ 
 void setup() {
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
