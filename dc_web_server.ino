@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
-String ssid = ""; /!!INSERT YOUR SSID HERE
-String password = ""; /!!INSERT YOUR PASSWORD HERE
+String ssid = ""; //!!INSERT YOUR SSID HERE
+String password = ""; //!!INSERT YOUR PASSWORD HERE
 ESP8266WebServer server(80);
 
 String head = "<!DOCTYPE html><html><head><title>ESP8266 Motor Control</title></head>";
